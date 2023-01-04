@@ -69,16 +69,16 @@ dnf makecache -y --refresh \
     --no-cache-dir \
     robotframework-pabot==$PABOT_VERSION \    
 # get edge and its driver
-wget https://packages.microsoft.com/yumrepos/edge/microsoft-edge-stable-108.0.1462.54-1.x86_64.rpm -P /tmp \
-wget https://msedgedriver.azureedge.net/108.0.1462.54/edgedriver_linux64.zip -P /tmp \
+&& wget https://packages.microsoft.com/yumrepos/edge/microsoft-edge-stable-108.0.1462.54-1.x86_64.rpm -P /tmp \
+&& wget https://msedgedriver.azureedge.net/108.0.1462.54/edgedriver_linux64.zip -P /tmp \
 #install edge and driver
-dnf install -y /tmp/microsoft-edge-stable-108.0.1462.54-1.x86_64.rpm \
-unzip /tmp/edgedriver_linux64.zip -d /tmp \
-mv -f /tmp/msedgedriver /usr/local/share/ \
-chmod 777 /usr/local/share/msedgedriver \
-ln -s /usr/local/share/msedgedriver /usr/local/bin/msedgedriver \
+&& dnf install -y /tmp/microsoft-edge-stable-108.0.1462.54-1.x86_64.rpm \
+&& unzip /tmp/edgedriver_linux64.zip -d /tmp \
+&& mv -f /tmp/msedgedriver /usr/local/share/ \
+&& chmod 777 /usr/local/share/msedgedriver \
+&& ln -s /usr/local/share/msedgedriver /usr/local/bin/msedgedriver \
 # clean the shit
-rm /tmp/*
+&& rm /tmp/*
 
 
 # patching with latest remoteserver that supports python 3.10+
