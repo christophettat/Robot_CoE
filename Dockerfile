@@ -78,7 +78,7 @@ dnf makecache -y --refresh \
 && chmod 777 /usr/local/share/msedgedriver \
 && ln -s /usr/local/share/msedgedriver /usr/local/bin/msedgedriver \
 # clean the shit
-&& rm /tmp/*
+&& rm -rf /tmp/*
 
 
 # patching with latest remoteserver that supports python 3.10+
