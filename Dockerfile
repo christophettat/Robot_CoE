@@ -20,8 +20,14 @@ USER root
 # install kafka version required by robot kafkalib
 #RUN dnf install -y librdkafka librdkafka-devel python-confluent-kafka
 
-RUN dnf makecache -y --refresh \
+RUN rpm --import https://packages.microsoft.com/keys/microsoft.asc && \
+dnf makecache -y --refresh \
+# && dnf install -y dnf-command(config-manager) \
+# && dnf config-manager --add-repo https://packages.microsoft.com/yumrepos/edge \
 && dnf install -y \
+#   microsoft-edge-stable \
+    wget \
+    unzip \
     gcc \ 
     g++\
     curl\
@@ -61,10 +67,19 @@ RUN dnf makecache -y --refresh \
     redis==4.1.4 \
 && pip3 install -I \
     --no-cache-dir \
-    robotframework-pabot==$PABOT_VERSION
-    
-#COPY ./ojdbc8.jar /lib/ojdbc8.jar
-#COPY ./ojdbc6.jar /lib/ojdbc6.jar
+    robotframework-pabot==$PABOT_VERSION \    
+# get edge and its driver
+wget https://packages.microsoft.com/yumrepos/edge/microsoft-edge-stable-108.0.1462.54-1.x86_64.rpm -P /tmp \
+wget https://msedgedriver.azureedge.net/108.0.1462.54/edgedriver_linux64.zip -P /tmp \
+#install edge and driver
+dnf install -y /tmp/microsoft-edge-stable-108.0.1462.54-1.x86_64.rpm \
+unzip /tmp/edgedriver_linux64.zip -d /tmp \
+mv -f /tmp/msedgedriver /usr/local/share/ \
+chmod 777 /usr/local/share/msedgedriver \
+ln -s /usr/local/share/msedgedriver /usr/local/bin/msedgedriver \
+# clean the shit
+rm /tmp/*
+
 
 # patching with latest remoteserver that supports python 3.10+
 ADD https://raw.githubusercontent.com/robotframework/PythonRemoteServer/master/src/robotremoteserver.py /usr/local/lib/python3.10/site-packages/pabot/
