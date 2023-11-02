@@ -26,6 +26,7 @@ RUN dnf makecache -y \
     g++ \
     curl \
     unzip \
+    libaio \
     python-confluent-kafka\
     libxml2-devel\
     libxslt-devel\
