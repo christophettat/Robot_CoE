@@ -23,8 +23,9 @@ USER root
 RUN dnf makecache -y \
 && dnf install -y --setopt=protected_packages=, \
     gcc \ 
-    g++\
-    curl\
+    g++ \
+    curl \
+    unzip \
     python-confluent-kafka\
     libxml2-devel\
     libxslt-devel\
