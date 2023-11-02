@@ -74,7 +74,16 @@ RUN cd /tmp && \
     unzip instantclient-basiclite.zip && \
     mv instantclient*/ /usr/lib/instantclient && \
     rm instantclient-basiclite.zip && \
-    ls -la /usr/lib/instantclient 
+    ln -s /usr/lib/instantclient/libclntsh.so.21.1 /usr/lib/libclntsh.so && \
+    ln -s /usr/lib/instantclient/libocci.so.21.1 /usr/lib/libocci.so && \
+    ln -s /usr/lib/instantclient/libociicus.so /usr/lib/libociicus.so && \
+    ln -s /usr/lib/instantclient/libnnz21.so /usr/lib/libnnz21.so && \
+    ln -s /usr/lib/libnsl.so.2 /usr/lib/libnsl.so.1 && \
+    ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
+    ln -s /lib64/ld-linux-x86-64.so.2 /usr/lib/ld-linux-x86-64.so.2
+
+ENV LD_LIBRARY_PATH=$JAVA_HOME/jre/lib/amd64:$JAVA_HOME/jre/lib/amd64/server:/usr/lib/instantclient
+
 
     
 #COPY ./ojdbc8.jar /lib/ojdbc8.jar
