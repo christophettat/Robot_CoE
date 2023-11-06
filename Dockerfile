@@ -14,7 +14,8 @@ ENV JIRA_VERSION 3.0.1
 ENV PYPDF2_VERSION 1.26.0
 ENV ATLASSIAN_PYTHON_API_VERSION 3.14.1
 ENV PABOT_VERSION 2.6.0
-ENV SELENIUMLIBRARY_VERSION 6.1.2  
+ENV SELENIUMLIBRARY_VERSION 6.1.2
+ENV CHROMIUM_VERSION 114.0
 USER root
 
 # install kafka version required by robot kafkalib
@@ -22,6 +23,8 @@ USER root
 
 RUN dnf makecache -y \
 && dnf install -y --setopt=protected_packages=, \
+    chromedriver-${CHROMIUM_VERSION}* \
+    chromium-${CHROMIUM_VERSION}* \
     gcc \ 
     g++\
     curl\
