@@ -20,7 +20,7 @@ jobs:
       - tests
   tests:
     steps:
-      - uses: christophettat/devops_coe_robot:v6.0.2-4 R
+      - uses: docker://christophettat/devops_coe_robot:v6.0.2-4 R
         shell: sh
         run: |
           robot--version
