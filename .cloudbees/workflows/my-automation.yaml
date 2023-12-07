@@ -20,8 +20,9 @@ jobs:
       - tests
   tests:
     steps:
-      - uses: docker://christophettat/devops_coe_robot:v6.0.2-4 R
-        shell: sh
-        run: |
-          robot--version
+      - uses: docker://christophettat/devops_coe_robot
         kind: test
+        shell: sh
+        run: robot
+        with:
+          args: " --version"
