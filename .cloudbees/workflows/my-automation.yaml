@@ -23,6 +23,4 @@ jobs:
       - uses: docker://christophettat/devops_coe_robot
         kind: test
         shell: sh
-        run: robot
-        with:
-          args: " --version"
+        run: robot  --version
