@@ -13,16 +13,3 @@ jobs:
         shell: sh
         run: |
           echo "hello world"
-      - uses: test
-        name: test
-        kind: test
-        with:
-          username: erzer
-          token: rzerze
-          job-name: zerze
-  scan:
-    environment: SI
-    steps:
-      - uses: DEV
-    needs:
-      - build
