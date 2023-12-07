@@ -16,11 +16,10 @@ jobs:
   Scan:
     steps:
       - uses: scan
-    needs:
-      - tests
   tests:
     steps:
       - uses: docker://christophettat/devops_coe_robot
         kind: test
         shell: sh
-        run: robot  --version|exit 0
+        run: robot  --version --NoStatusRC
+    needs: build
