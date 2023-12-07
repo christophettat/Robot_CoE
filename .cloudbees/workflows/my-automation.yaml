@@ -13,3 +13,10 @@ jobs:
         shell: sh
         run: |
           echo "hello world"
+    needs:
+      - scan
+  scan:
+    environment: SI
+    steps:
+      - uses: scan
+        kind: scan
