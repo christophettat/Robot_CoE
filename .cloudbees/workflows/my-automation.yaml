@@ -16,3 +16,9 @@ jobs:
   Scan:
     steps:
       - uses: scan
+    needs:
+      - tests
+  tests:
+    steps:
+      - uses: RF
+        kind: test
