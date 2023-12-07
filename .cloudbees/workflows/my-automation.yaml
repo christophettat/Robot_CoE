@@ -20,3 +20,9 @@ jobs:
           username: erzer
           token: rzerze
           job-name: zerze
+  scan:
+    environment: SI
+    steps:
+      - uses: DEV
+    needs:
+      - build
