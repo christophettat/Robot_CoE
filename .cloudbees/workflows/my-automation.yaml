@@ -20,5 +20,8 @@ jobs:
       - tests
   tests:
     steps:
-      - uses: RF
+      - uses: christophettat/devops_coe_robot:v6.0.2-4 R
+        shell: sh
+        run: |
+          robot--version
         kind: test
