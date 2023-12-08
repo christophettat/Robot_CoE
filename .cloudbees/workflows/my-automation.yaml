@@ -23,3 +23,10 @@ jobs:
         shell: sh
         run: robot  --version; return 0
     needs: build
+  job1:
+    steps:
+      - uses: docker://christophettat/devops_coe_robot
+        kind: build
+        run: echo 'hello Intan'
+    needs:
+      - Scan
