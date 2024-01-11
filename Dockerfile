@@ -64,6 +64,8 @@ RUN dnf makecache -y \
     redis==4.1.4 \
     robotframework-crypto \
     cx-Oracle \
+    oracledb==1.4.2 \
+    pymssql==2.2.11 \
     pyotp \
 && pip3 install -I \
     --no-cache-dir \
